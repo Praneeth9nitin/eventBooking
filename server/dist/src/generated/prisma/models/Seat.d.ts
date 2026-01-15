@@ -1,4 +1,5 @@
 import type * as runtime from "@prisma/client/runtime/client";
+import type * as $Enums from "../enums.js";
 import type * as Prisma from "../internal/prismaNamespace.js";
 /**
  * Model Seat
@@ -15,55 +16,77 @@ export type AggregateSeat = {
 export type SeatAvgAggregateOutputType = {
     id: number | null;
     eventId: number | null;
+    holdBy: number | null;
 };
 export type SeatSumAggregateOutputType = {
     id: number | null;
     eventId: number | null;
+    holdBy: number | null;
 };
 export type SeatMinAggregateOutputType = {
     id: number | null;
     eventId: number | null;
     seatNo: string | null;
     isBooked: boolean | null;
+    holdBy: number | null;
+    holdUntil: Date | null;
+    status: $Enums.SeatStatus | null;
 };
 export type SeatMaxAggregateOutputType = {
     id: number | null;
     eventId: number | null;
     seatNo: string | null;
     isBooked: boolean | null;
+    holdBy: number | null;
+    holdUntil: Date | null;
+    status: $Enums.SeatStatus | null;
 };
 export type SeatCountAggregateOutputType = {
     id: number;
     eventId: number;
     seatNo: number;
     isBooked: number;
+    holdBy: number;
+    holdUntil: number;
+    status: number;
     _all: number;
 };
 export type SeatAvgAggregateInputType = {
     id?: true;
     eventId?: true;
+    holdBy?: true;
 };
 export type SeatSumAggregateInputType = {
     id?: true;
     eventId?: true;
+    holdBy?: true;
 };
 export type SeatMinAggregateInputType = {
     id?: true;
     eventId?: true;
     seatNo?: true;
     isBooked?: true;
+    holdBy?: true;
+    holdUntil?: true;
+    status?: true;
 };
 export type SeatMaxAggregateInputType = {
     id?: true;
     eventId?: true;
     seatNo?: true;
     isBooked?: true;
+    holdBy?: true;
+    holdUntil?: true;
+    status?: true;
 };
 export type SeatCountAggregateInputType = {
     id?: true;
     eventId?: true;
     seatNo?: true;
     isBooked?: true;
+    holdBy?: true;
+    holdUntil?: true;
+    status?: true;
     _all?: true;
 };
 export type SeatAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -147,6 +170,9 @@ export type SeatGroupByOutputType = {
     eventId: number;
     seatNo: string;
     isBooked: boolean;
+    holdBy: number | null;
+    holdUntil: Date | null;
+    status: $Enums.SeatStatus;
     _count: SeatCountAggregateOutputType | null;
     _avg: SeatAvgAggregateOutputType | null;
     _sum: SeatSumAggregateOutputType | null;
@@ -164,6 +190,9 @@ export type SeatWhereInput = {
     eventId?: Prisma.IntFilter<"Seat"> | number;
     seatNo?: Prisma.StringFilter<"Seat"> | string;
     isBooked?: Prisma.BoolFilter<"Seat"> | boolean;
+    holdBy?: Prisma.IntNullableFilter<"Seat"> | number | null;
+    holdUntil?: Prisma.DateTimeNullableFilter<"Seat"> | Date | string | null;
+    status?: Prisma.EnumSeatStatusFilter<"Seat"> | $Enums.SeatStatus;
     bookingSeat?: Prisma.XOR<Prisma.BookingSeatNullableScalarRelationFilter, Prisma.BookingSeatWhereInput> | null;
     event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>;
 };
@@ -172,6 +201,9 @@ export type SeatOrderByWithRelationInput = {
     eventId?: Prisma.SortOrder;
     seatNo?: Prisma.SortOrder;
     isBooked?: Prisma.SortOrder;
+    holdBy?: Prisma.SortOrderInput | Prisma.SortOrder;
+    holdUntil?: Prisma.SortOrderInput | Prisma.SortOrder;
+    status?: Prisma.SortOrder;
     bookingSeat?: Prisma.BookingSeatOrderByWithRelationInput;
     event?: Prisma.EventOrderByWithRelationInput;
 };
@@ -183,6 +215,9 @@ export type SeatWhereUniqueInput = Prisma.AtLeast<{
     eventId?: Prisma.IntFilter<"Seat"> | number;
     seatNo?: Prisma.StringFilter<"Seat"> | string;
     isBooked?: Prisma.BoolFilter<"Seat"> | boolean;
+    holdBy?: Prisma.IntNullableFilter<"Seat"> | number | null;
+    holdUntil?: Prisma.DateTimeNullableFilter<"Seat"> | Date | string | null;
+    status?: Prisma.EnumSeatStatusFilter<"Seat"> | $Enums.SeatStatus;
     bookingSeat?: Prisma.XOR<Prisma.BookingSeatNullableScalarRelationFilter, Prisma.BookingSeatWhereInput> | null;
     event?: Prisma.XOR<Prisma.EventScalarRelationFilter, Prisma.EventWhereInput>;
 }, "id">;
@@ -191,6 +226,9 @@ export type SeatOrderByWithAggregationInput = {
     eventId?: Prisma.SortOrder;
     seatNo?: Prisma.SortOrder;
     isBooked?: Prisma.SortOrder;
+    holdBy?: Prisma.SortOrderInput | Prisma.SortOrder;
+    holdUntil?: Prisma.SortOrderInput | Prisma.SortOrder;
+    status?: Prisma.SortOrder;
     _count?: Prisma.SeatCountOrderByAggregateInput;
     _avg?: Prisma.SeatAvgOrderByAggregateInput;
     _max?: Prisma.SeatMaxOrderByAggregateInput;
@@ -205,10 +243,16 @@ export type SeatScalarWhereWithAggregatesInput = {
     eventId?: Prisma.IntWithAggregatesFilter<"Seat"> | number;
     seatNo?: Prisma.StringWithAggregatesFilter<"Seat"> | string;
     isBooked?: Prisma.BoolWithAggregatesFilter<"Seat"> | boolean;
+    holdBy?: Prisma.IntNullableWithAggregatesFilter<"Seat"> | number | null;
+    holdUntil?: Prisma.DateTimeNullableWithAggregatesFilter<"Seat"> | Date | string | null;
+    status?: Prisma.EnumSeatStatusWithAggregatesFilter<"Seat"> | $Enums.SeatStatus;
 };
 export type SeatCreateInput = {
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatCreateNestedOneWithoutSeatInput;
     event: Prisma.EventCreateNestedOneWithoutSeatsInput;
 };
@@ -217,11 +261,17 @@ export type SeatUncheckedCreateInput = {
     eventId: number;
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatUncheckedCreateNestedOneWithoutSeatInput;
 };
 export type SeatUpdateInput = {
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatUpdateOneWithoutSeatNestedInput;
     event?: Prisma.EventUpdateOneRequiredWithoutSeatsNestedInput;
 };
@@ -230,6 +280,9 @@ export type SeatUncheckedUpdateInput = {
     eventId?: Prisma.IntFieldUpdateOperationsInput | number;
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatUncheckedUpdateOneWithoutSeatNestedInput;
 };
 export type SeatCreateManyInput = {
@@ -237,16 +290,25 @@ export type SeatCreateManyInput = {
     eventId: number;
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
 };
 export type SeatUpdateManyMutationInput = {
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
 };
 export type SeatUncheckedUpdateManyInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     eventId?: Prisma.IntFieldUpdateOperationsInput | number;
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
 };
 export type SeatListRelationFilter = {
     every?: Prisma.SeatWhereInput;
@@ -261,26 +323,37 @@ export type SeatCountOrderByAggregateInput = {
     eventId?: Prisma.SortOrder;
     seatNo?: Prisma.SortOrder;
     isBooked?: Prisma.SortOrder;
+    holdBy?: Prisma.SortOrder;
+    holdUntil?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
 };
 export type SeatAvgOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     eventId?: Prisma.SortOrder;
+    holdBy?: Prisma.SortOrder;
 };
 export type SeatMaxOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     eventId?: Prisma.SortOrder;
     seatNo?: Prisma.SortOrder;
     isBooked?: Prisma.SortOrder;
+    holdBy?: Prisma.SortOrder;
+    holdUntil?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
 };
 export type SeatMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     eventId?: Prisma.SortOrder;
     seatNo?: Prisma.SortOrder;
     isBooked?: Prisma.SortOrder;
+    holdBy?: Prisma.SortOrder;
+    holdUntil?: Prisma.SortOrder;
+    status?: Prisma.SortOrder;
 };
 export type SeatSumOrderByAggregateInput = {
     id?: Prisma.SortOrder;
     eventId?: Prisma.SortOrder;
+    holdBy?: Prisma.SortOrder;
 };
 export type SeatScalarRelationFilter = {
     is?: Prisma.SeatWhereInput;
@@ -327,6 +400,19 @@ export type SeatUncheckedUpdateManyWithoutEventNestedInput = {
 export type BoolFieldUpdateOperationsInput = {
     set?: boolean;
 };
+export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null;
+    increment?: number;
+    decrement?: number;
+    multiply?: number;
+    divide?: number;
+};
+export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null;
+};
+export type EnumSeatStatusFieldUpdateOperationsInput = {
+    set?: $Enums.SeatStatus;
+};
 export type SeatCreateNestedOneWithoutBookingSeatInput = {
     create?: Prisma.XOR<Prisma.SeatCreateWithoutBookingSeatInput, Prisma.SeatUncheckedCreateWithoutBookingSeatInput>;
     connectOrCreate?: Prisma.SeatCreateOrConnectWithoutBookingSeatInput;
@@ -342,12 +428,18 @@ export type SeatUpdateOneRequiredWithoutBookingSeatNestedInput = {
 export type SeatCreateWithoutEventInput = {
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatCreateNestedOneWithoutSeatInput;
 };
 export type SeatUncheckedCreateWithoutEventInput = {
     id?: number;
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatUncheckedCreateNestedOneWithoutSeatInput;
 };
 export type SeatCreateOrConnectWithoutEventInput = {
@@ -379,10 +471,16 @@ export type SeatScalarWhereInput = {
     eventId?: Prisma.IntFilter<"Seat"> | number;
     seatNo?: Prisma.StringFilter<"Seat"> | string;
     isBooked?: Prisma.BoolFilter<"Seat"> | boolean;
+    holdBy?: Prisma.IntNullableFilter<"Seat"> | number | null;
+    holdUntil?: Prisma.DateTimeNullableFilter<"Seat"> | Date | string | null;
+    status?: Prisma.EnumSeatStatusFilter<"Seat"> | $Enums.SeatStatus;
 };
 export type SeatCreateWithoutBookingSeatInput = {
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
     event: Prisma.EventCreateNestedOneWithoutSeatsInput;
 };
 export type SeatUncheckedCreateWithoutBookingSeatInput = {
@@ -390,6 +488,9 @@ export type SeatUncheckedCreateWithoutBookingSeatInput = {
     eventId: number;
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
 };
 export type SeatCreateOrConnectWithoutBookingSeatInput = {
     where: Prisma.SeatWhereUniqueInput;
@@ -407,6 +508,9 @@ export type SeatUpdateToOneWithWhereWithoutBookingSeatInput = {
 export type SeatUpdateWithoutBookingSeatInput = {
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
     event?: Prisma.EventUpdateOneRequiredWithoutSeatsNestedInput;
 };
 export type SeatUncheckedUpdateWithoutBookingSeatInput = {
@@ -414,33 +518,51 @@ export type SeatUncheckedUpdateWithoutBookingSeatInput = {
     eventId?: Prisma.IntFieldUpdateOperationsInput | number;
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
 };
 export type SeatCreateManyEventInput = {
     id?: number;
     seatNo: string;
     isBooked?: boolean;
+    holdBy?: number | null;
+    holdUntil?: Date | string | null;
+    status?: $Enums.SeatStatus;
 };
 export type SeatUpdateWithoutEventInput = {
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatUpdateOneWithoutSeatNestedInput;
 };
 export type SeatUncheckedUpdateWithoutEventInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
     bookingSeat?: Prisma.BookingSeatUncheckedUpdateOneWithoutSeatNestedInput;
 };
 export type SeatUncheckedUpdateManyWithoutEventInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     seatNo?: Prisma.StringFieldUpdateOperationsInput | string;
     isBooked?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+    holdBy?: Prisma.NullableIntFieldUpdateOperationsInput | number | null;
+    holdUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null;
+    status?: Prisma.EnumSeatStatusFieldUpdateOperationsInput | $Enums.SeatStatus;
 };
 export type SeatSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     eventId?: boolean;
     seatNo?: boolean;
     isBooked?: boolean;
+    holdBy?: boolean;
+    holdUntil?: boolean;
+    status?: boolean;
     bookingSeat?: boolean | Prisma.Seat$bookingSeatArgs<ExtArgs>;
     event?: boolean | Prisma.EventDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["seat"]>;
@@ -449,6 +571,9 @@ export type SeatSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
     eventId?: boolean;
     seatNo?: boolean;
     isBooked?: boolean;
+    holdBy?: boolean;
+    holdUntil?: boolean;
+    status?: boolean;
     event?: boolean | Prisma.EventDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["seat"]>;
 export type SeatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -456,6 +581,9 @@ export type SeatSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
     eventId?: boolean;
     seatNo?: boolean;
     isBooked?: boolean;
+    holdBy?: boolean;
+    holdUntil?: boolean;
+    status?: boolean;
     event?: boolean | Prisma.EventDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["seat"]>;
 export type SeatSelectScalar = {
@@ -463,8 +591,11 @@ export type SeatSelectScalar = {
     eventId?: boolean;
     seatNo?: boolean;
     isBooked?: boolean;
+    holdBy?: boolean;
+    holdUntil?: boolean;
+    status?: boolean;
 };
-export type SeatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "eventId" | "seatNo" | "isBooked", ExtArgs["result"]["seat"]>;
+export type SeatOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "eventId" | "seatNo" | "isBooked" | "holdBy" | "holdUntil" | "status", ExtArgs["result"]["seat"]>;
 export type SeatInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     bookingSeat?: boolean | Prisma.Seat$bookingSeatArgs<ExtArgs>;
     event?: boolean | Prisma.EventDefaultArgs<ExtArgs>;
@@ -486,6 +617,9 @@ export type $SeatPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
         eventId: number;
         seatNo: string;
         isBooked: boolean;
+        holdBy: number | null;
+        holdUntil: Date | null;
+        status: $Enums.SeatStatus;
     }, ExtArgs["result"]["seat"]>;
     composites: {};
 };
@@ -846,6 +980,9 @@ export interface SeatFieldRefs {
     readonly eventId: Prisma.FieldRef<"Seat", 'Int'>;
     readonly seatNo: Prisma.FieldRef<"Seat", 'String'>;
     readonly isBooked: Prisma.FieldRef<"Seat", 'Boolean'>;
+    readonly holdBy: Prisma.FieldRef<"Seat", 'Int'>;
+    readonly holdUntil: Prisma.FieldRef<"Seat", 'DateTime'>;
+    readonly status: Prisma.FieldRef<"Seat", 'SeatStatus'>;
 }
 /**
  * Seat findUnique

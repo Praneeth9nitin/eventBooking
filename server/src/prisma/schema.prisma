@@ -38,6 +38,9 @@ model Seat {
   seatNo      String
   isBooked    Boolean      @default(false)
   bookingSeat BookingSeat?
+  holdBy      Int?
+  holdUntil   DateTime?
+  status      SeatStatus  @default(AVAILABLE)
   event       Event        @relation(fields: [eventId], references: [id])
 }
 
@@ -65,4 +68,10 @@ enum BookingStatus {
   PENDING
   CONFIRMED
   FAILED
+}
+
+enum SeatStatus {
+  AVAILABLE
+  HOLD
+  BOOKED
 }

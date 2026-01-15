@@ -78,7 +78,10 @@ export const SeatScalarFieldEnum = {
     id: 'id',
     eventId: 'eventId',
     seatNo: 'seatNo',
-    isBooked: 'isBooked'
+    isBooked: 'isBooked',
+    holdBy: 'holdBy',
+    holdUntil: 'holdUntil',
+    status: 'status'
 };
 export const BookingScalarFieldEnum = {
     id: 'id',
@@ -98,5 +101,9 @@ export const SortOrder = {
 export const QueryMode = {
     default: 'default',
     insensitive: 'insensitive'
+};
+export const NullsOrder = {
+    first: 'first',
+    last: 'last'
 };
 //# sourceMappingURL=prismaNamespaceBrowser.js.map

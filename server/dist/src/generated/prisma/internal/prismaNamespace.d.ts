@@ -758,6 +758,9 @@ export declare const SeatScalarFieldEnum: {
     readonly eventId: "eventId";
     readonly seatNo: "seatNo";
     readonly isBooked: "isBooked";
+    readonly holdBy: "holdBy";
+    readonly holdUntil: "holdUntil";
+    readonly status: "status";
 };
 export type SeatScalarFieldEnum = (typeof SeatScalarFieldEnum)[keyof typeof SeatScalarFieldEnum];
 export declare const BookingScalarFieldEnum: {
@@ -783,6 +786,11 @@ export declare const QueryMode: {
     readonly insensitive: "insensitive";
 };
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
+export declare const NullsOrder: {
+    readonly first: "first";
+    readonly last: "last";
+};
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];
 /**
  * Field references
  */
@@ -814,6 +822,14 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'Boolean'
  */
 export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>;
+/**
+ * Reference to a field of type 'SeatStatus'
+ */
+export type EnumSeatStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SeatStatus'>;
+/**
+ * Reference to a field of type 'SeatStatus[]'
+ */
+export type ListEnumSeatStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SeatStatus[]'>;
 /**
  * Reference to a field of type 'BookingStatus'
  */

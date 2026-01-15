@@ -12,4 +12,9 @@ export const BookingStatus = {
     CONFIRMED: 'CONFIRMED',
     FAILED: 'FAILED'
 };
+export const SeatStatus = {
+    AVAILABLE: 'AVAILABLE',
+    HOLD: 'HOLD',
+    BOOKED: 'BOOKED'
+};
 //# sourceMappingURL=enums.js.map

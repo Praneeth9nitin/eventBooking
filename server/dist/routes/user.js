@@ -33,7 +33,7 @@ app.post('/signup', async (req, res) => {
 app.post('/signin', async (req, res) => {
     const { email, password } = req.body;
     try {
-        const user = await prisma.user.findFirstOrThrow({
+        const user = await prisma.user.findUniqueOrThrow({
             where: {
                 email
             }
@@ -132,7 +132,8 @@ app.post('/bookSeats/:value', authMiddleware, async (req, res) => {
             const booking = await tx.booking.create({
                 data: {
                     userId,
-                    eventId
+                    eventId,
+                    status: "CONFIRMED"
                 }
             });
             seats.forEach(element => {

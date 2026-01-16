@@ -39,7 +39,7 @@ app.post('/signup', async (req : Request, res : Response) => {
 app.post('/signin', async (req : Request, res : Response)=>{
     const {email, password} : { email : string, password : string} = req.body
     try{
-        const user = await prisma.user.findFirstOrThrow({
+        const user = await prisma.user.findUniqueOrThrow({
             where:{
                 email
             }

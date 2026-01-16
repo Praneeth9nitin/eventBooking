@@ -63,8 +63,4 @@ app.post('/createEvent', middleware, async (req:Request, res:Response)=>{
     return res.status(200).json({msg:"event created",details:event})
 })
 
-app.get('/',(req, res)=>{
-    console.log(String.fromCharCode(65+ 10/10) +'-'+ String.fromCharCode(48 + 10%10))
-    res.send("all good")
-})
 export default app;

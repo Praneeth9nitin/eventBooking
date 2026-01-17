@@ -10,7 +10,8 @@ git clone <https://github.com/Praneeth9nitin/eventBooking.git>
 npm install
 
 ### Setup environment variables
-cp .env.example .env
+create .env file provide 
+DATABASE_URL and JWT_SECRECT
 
 ### Run database migrations
 npx prisma migrate dev
